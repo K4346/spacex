@@ -58,16 +58,16 @@ function drawMap() {
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
-    projection = d3.geoMercator()
+    const projection = d3.geoMercator()
         .scale(120)
         .center([0, 20])
         .translate([width / 2 - margin.left, height / 2]);
 
-    drawWorld()
+    drawWorld(projection)
     return projection
 }
 
-function drawWorld() {
+function drawWorld(projection) {
     svgMap
         .selectAll("path")
         .data(Geo.features)
